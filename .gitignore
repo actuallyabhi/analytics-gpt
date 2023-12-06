@@ -1,0 +1,5 @@
+settings.py
+venv
+__pycache__
+pycache
+terminal_output.txt

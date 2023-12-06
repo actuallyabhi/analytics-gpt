@@ -1,0 +1,167 @@
+2023-06-23 14:50:37,330 INFO: Index page accessed
+2023-06-23 14:50:43,631 INFO: User credentials found.
+2023-06-23 14:51:01,161 INFO: Database credentials found.
+2023-06-23 14:51:37,701 INFO: Index page accessed
+2023-06-23 14:51:44,307 WARNING: User credentials not found.
+2023-06-23 14:51:54,389 WARNING: User credentials not found.
+2023-06-23 14:52:00,099 INFO: User credentials found.
+2023-06-23 14:52:06,690 WARNING: Database credentials not found.
+2023-06-23 15:23:18,713 - INFO - Index page accessed
+2023-06-23 15:23:29,873 - INFO - User credentials found.
+2023-06-23 15:23:36,564 - INFO - Database credentials found.
+2023-06-24 16:18:15,220 - INFO - Index page accessed
+2023-06-24 16:18:20,541 - INFO - User credentials found.
+2023-06-24 16:18:26,740 - INFO - Database credentials found.
+2023-06-24 18:01:22,978 - INFO - Index page accessed
+2023-06-24 18:01:27,413 - INFO - User credentials found.
+2023-06-24 18:01:32,384 - INFO - Database credentials found.
+2023-06-24 18:10:08,493 - INFO - Index page accessed
+2023-06-24 18:10:12,172 - INFO - User credentials found.
+2023-06-24 18:10:17,615 - INFO - Database credentials found.
+2023-06-27 14:48:28,029 - INFO - Index page accessed
+2023-06-27 14:48:35,416 - INFO - User credentials found.
+2023-06-27 14:48:46,426 - INFO - Database credentials found.
+2023-06-27 14:50:33,511 - INFO - Index page accessed
+2023-06-27 14:50:42,429 - INFO - User credentials found.
+2023-06-27 14:50:47,619 - INFO - Database credentials found.
+2023-06-27 14:55:56,320 - INFO - Index page accessed
+2023-06-27 14:56:00,156 - INFO - User credentials found.
+2023-06-27 14:56:06,758 - INFO - Database credentials found.
+2023-06-27 14:56:27,353 - ERROR - Error storing query and response in MySQL: 'ImmutableMultiDict' object is not callable
+2023-06-27 14:59:12,848 - INFO - Index page accessed
+2023-06-27 14:59:17,704 - INFO - User credentials found.
+2023-06-27 14:59:22,003 - INFO - Database credentials found.
+2023-06-27 15:08:25,738 - INFO - Index page accessed
+2023-06-27 15:10:07,622 - INFO - User credentials found.
+2023-06-27 15:10:21,605 - INFO - Database credentials found.
+2023-06-27 15:17:02,270 - INFO - Index page accessed
+2023-06-27 15:17:06,556 - INFO - User credentials found.
+2023-06-27 15:17:11,423 - INFO - Database credentials found.
+2023-06-27 17:06:47,425 - INFO - Index page accessed
+2023-06-27 17:06:51,162 - INFO - User credentials found.
+2023-06-27 17:06:55,772 - INFO - Database credentials found.
+2023-06-27 17:16:56,115 - INFO - Index page accessed
+2023-06-27 17:16:59,989 - INFO - User credentials found.
+2023-06-27 17:17:05,114 - INFO - Database credentials found.
+2023-06-27 17:19:27,171 - INFO - Index page accessed
+2023-06-27 17:19:31,564 - INFO - User credentials found.
+2023-06-27 17:19:35,882 - INFO - Database credentials found.
+2023-06-27 17:26:54,468 - INFO - Index page accessed
+2023-06-27 17:26:59,272 - INFO - User credentials found.
+2023-06-27 17:27:04,143 - INFO - Database credentials found.
+2023-06-27 17:29:20,350 - INFO - Index page accessed
+2023-06-27 17:30:03,356 - INFO - User credentials found.
+2023-06-27 17:30:08,567 - INFO - Database credentials found.
+2023-06-27 17:32:38,575 - INFO - Index page accessed
+2023-06-27 17:32:42,653 - INFO - User credentials found.
+2023-06-27 17:32:47,498 - INFO - Database credentials found.
+2023-06-29 14:35:12,333 - INFO - Index page accessed
+2023-06-29 14:36:32,093 - INFO - Index page accessed
+2023-06-29 14:39:42,521 - INFO - Index page accessed
+2023-06-29 14:39:51,579 - INFO - Index page accessed
+2023-06-29 15:02:18,775 - INFO - Index page accessed
+2023-06-29 15:02:57,242 - INFO - Index page accessed
+2023-06-29 15:04:06,144 - INFO - Index page accessed
+2023-06-29 15:05:37,895 - INFO - Index page accessed
+2023-06-29 15:07:26,976 - INFO - Index page accessed
+2023-06-29 15:08:29,450 - INFO - Index page accessed
+2023-06-29 15:11:08,936 - INFO - Index page accessed
+2023-06-29 15:22:34,443 - ERROR - Error in retrieving from MySQL: Not all parameters were used in the SQL statement
+2023-06-29 15:25:24,930 - INFO - User created. ID: 7
+2023-06-29 15:26:55,978 - ERROR - Error retrieving credentials from MySQL: Not all parameters were used in the SQL statement
+2023-06-29 15:31:22,812 - INFO - Login successful.
+2023-06-29 16:13:22,895 - INFO - Databases retrieved successfully.
+2023-06-29 16:16:33,072 - ERROR - Error retrieving databases from MySQL: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'databases WHERE user_id = '1'' at line 1
+2023-06-29 16:22:42,715 - ERROR - Error retrieving tables from MySQL: 1049 (42000): Unknown database '1'
+2023-06-29 16:27:07,396 - ERROR - Error retrieving database credentials from MySQL: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'databases WHERE db_id = '1'' at line 1
+2023-06-29 16:27:46,705 - ERROR - Error retrieving tables from the selected database: MetaData.__init__() got an unexpected keyword argument 'bind'
+2023-06-29 16:29:02,067 - ERROR - Error retrieving tables from the selected database: MetaData.__init__() got an unexpected keyword argument 'bind'
+2023-06-29 16:29:06,186 - ERROR - Error retrieving tables from the selected database: MetaData.__init__() got an unexpected keyword argument 'bind'
+2023-06-29 16:31:45,491 - ERROR - Error retrieving tables from MySQL: MySQL Connection not available.
+2023-06-29 16:40:07,131 - INFO - Index page accessed
+2023-06-29 16:48:15,752 - INFO - Index page accessed
+2023-06-29 16:48:29,810 - INFO - User created. ID: 8
+2023-06-29 16:53:02,687 - INFO - Index page accessed
+2023-06-29 16:53:22,377 - INFO - User created. ID: 9
+2023-06-29 16:53:40,006 - INFO - Login successful.
+2023-06-29 16:55:22,948 - INFO - Index page accessed
+2023-06-29 16:55:31,064 - INFO - Login successful.
+2023-06-29 16:56:25,335 - INFO - Index page accessed
+2023-06-29 16:56:31,018 - INFO - Login successful.
+2023-06-29 16:57:55,411 - INFO - Index page accessed
+2023-06-29 16:58:01,635 - INFO - Login successful.
+2023-06-29 17:43:00,927 - INFO - Index page accessed
+2023-06-29 17:43:07,252 - INFO - Login successful.
+2023-06-29 17:44:35,315 - INFO - Index page accessed
+2023-06-29 17:44:40,507 - INFO - Login successful.
+2023-06-29 17:45:54,000 - INFO - Index page accessed
+2023-06-29 17:45:59,147 - INFO - Login successful.
+2023-06-29 17:46:51,920 - INFO - Index page accessed
+2023-06-29 17:46:57,734 - INFO - Login successful.
+2023-06-29 17:47:13,602 - INFO - Index page accessed
+2023-06-29 17:47:22,868 - INFO - Login successful.
+2023-06-29 17:48:33,628 - INFO - Index page accessed
+2023-06-29 17:48:40,147 - INFO - Login successful.
+2023-06-29 18:00:59,091 - INFO - Index page accessed
+2023-06-29 18:01:04,056 - INFO - Login successful.
+2023-06-29 18:03:17,662 - INFO - Index page accessed
+2023-06-29 18:03:23,609 - INFO - Login successful.
+2023-06-29 18:03:50,501 - INFO - Database created. ID: 6
+2023-06-29 18:03:55,998 - INFO - Index page accessed
+2023-06-29 18:04:01,779 - INFO - Login successful.
+2023-06-29 18:11:40,897 - INFO - Index page accessed
+2023-06-29 18:12:05,104 - INFO - Index page accessed
+2023-06-29 18:16:54,233 - INFO - Index page accessed
+2023-06-29 18:16:59,538 - INFO - Login successful.
+2023-06-29 18:17:05,672 - WARNING - Database credentials not found.
+2023-06-29 18:17:19,953 - WARNING - Database credentials not found.
+2023-06-29 18:27:56,438 - INFO - Index page accessed
+2023-06-29 18:28:01,844 - INFO - Login successful.
+2023-06-29 18:35:03,052 - INFO - Index page accessed
+2023-06-29 18:35:08,114 - INFO - Login successful.
+2023-06-30 11:37:41,943 - INFO - Index page accessed
+2023-06-30 11:51:39,738 - INFO - Login successful.
+2023-06-30 11:54:02,696 - INFO - Index page accessed
+2023-06-30 11:56:57,535 - INFO - Login successful.
+2023-06-30 11:57:39,016 - INFO - Index page accessed
+2023-06-30 11:58:03,187 - INFO - Login successful.
+2023-07-01 09:51:38,218 - INFO - Index page accessed
+2023-07-01 09:51:45,708 - INFO - Login successful.
+2023-07-05 00:09:46,527 - INFO - Index page accessed
+2023-07-05 00:15:27,767 - INFO - Database created. ID: 7
+2023-07-05 18:11:38,248 - INFO - Index page accessed
+2023-07-07 13:44:50,302 - INFO - Index page accessed
+2023-07-08 18:47:06,621 - ERROR - Invalid access
+2023-07-08 18:47:26,133 - ERROR - Invalid access
+2023-07-08 18:47:52,361 - ERROR - Invalid access
+2023-07-08 18:51:04,517 - ERROR - Invalid access
+2023-07-11 01:13:57,588 - ERROR - Error storing query and response in MySQL: 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+2023-07-11 01:14:17,669 - ERROR - Error storing query and response in MySQL: 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+2023-07-11 01:14:20,685 - ERROR - Error storing query and response in MySQL: 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
+2023-11-25 00:45:11,281 - ERROR - Error in retrieving from MySQL: 1146 (42S02): Table 'data_insights.users' doesn't exist
+2023-11-25 00:48:44,908 - ERROR - Error storing credentials in MySQL: 1364 (HY000): Field 'user_id' doesn't have a default value
+2023-11-25 00:49:16,256 - INFO - User created. ID: 0
+2023-11-25 00:49:16,304 - INFO - Database created. ID: 1
+2023-11-25 00:50:16,513 - ERROR - Error connecting to MySQL: 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+2023-11-25 00:58:10,562 - INFO - User created. ID: 1
+2023-11-25 00:58:10,605 - INFO - Database created. ID: 2
+2023-11-25 01:04:04,403 - ERROR - Error connecting to MySQL: 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+2023-11-25 01:04:57,458 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:06:29,158 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:08:39,538 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:08:52,159 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:09:36,586 - INFO - Database created. ID: 3
+2023-11-25 01:09:36,702 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:13:53,211 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:13:57,297 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:14:55,412 - ERROR - Error retrieving database credentials from MySQL: 1054 (42S22): Unknown column 'db_id' in 'where clause'
+2023-11-25 01:16:09,028 - ERROR - Error retrieving database credentials from MySQL: 1054 (42S22): Unknown column 'db_id' in 'where clause'
+2023-11-25 01:17:38,381 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:18:49,933 - ERROR - Error storing query and response in MySQL: 1146 (42S02): Table 'data_insights.query' doesn't exist
+2023-11-25 01:23:40,619 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:28:37,908 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:29:36,007 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'db_id' in 'field list'
+2023-11-25 01:35:01,037 - ERROR - Error connecting to MySQL: 1045 (28000): Access denied for user 'test'@'localhost' (using password: YES)
+2023-11-25 01:40:42,671 - ERROR - Error retrieving databases from MySQL: 1054 (42S22): Unknown column 'id' in 'field list'
+2023-11-25 01:43:30,776 - ERROR - Invalid access
+2023-11-25 01:43:33,052 - ERROR - Invalid access
