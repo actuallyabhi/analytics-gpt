@@ -1,4 +1,4 @@
-# Beyond Analytics
+# Analytics-GPT
 
 ### Introduction
 A LLM powered data analytics platform that provides insights and predictions from the databases without the need for writing complex SQL queries.
