@@ -1,0 +1,10 @@
+SECRET_KEY = "--your-secret-key--"
+DEBUG = True
+
+DB_CONFIG = {
+    'user': '',
+    'password': '',
+    'host': '',
+    'port': '',
+    'database': ''
+}
