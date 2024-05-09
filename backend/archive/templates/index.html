@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Insights</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* CSS for the feedback prompt popup */
+        #feedback-prompt-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+        }
+
+        #feedback-prompt-popup h3 {
+            margin-top: 0;
+        }
+
+        #feedback-prompt-popup label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #feedback-prompt-popup textarea {
+            width: 100%;
+            height: 100px;
+            resize: vertical;
+        }
+
+        #feedback-prompt-popup button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="user-registration">
+        <h2>User Registration</h2>
+        <label for="user-type">Are you a new or existing user?</label>
+        <select id="user-type" name="user-type">
+            <option value="new">New User</option>
+            <option value="existing">Existing User</option>
+        </select>
+
+        <div id="new-user-fields">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+                
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+                
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="mobile">Mobile:</label>
+            <input type="text" id="mobile" name="mobile" required>
+            <button id="register-user-btn" type="submit">Register</button>
+        </div>
+
+        <div id="existing-user-fields" style="display: none;">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" name="login-email" required>
+                
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="login-password" required>
+                
+            <button id="login-user-btn" type="submit">Login</button>
+        </div>
+    </div>
+
+    <div id="database-selection" style="display: none;">
+        <h2>Database Selection</h2>
+        <label for="database-type">Do you want to use an existing database or create a new one?</label>
+        <select id="database-type" name="database-type">
+            <option value="existing">Existing Database</option>
+            <option value="new">New Database</option>
+        </select>
+
+        <div id="existing-database-fields" style="display: none;">
+            <label for="existing-database">Existing Database:</label>
+            <input type="text" id="existing-database" name="existing-database">
+            <button id="select-existing-db-btn" type="submit">Select Database</button>
+        </div>
+
+        <div id="new-database-fields" style="display: none;">
+            <label for="database-host">Database Host:</label>
+            <input type="text" id="database-host" name="database-host">
+
+            <label for="database-port">Database Port:</label>
+            <input type="text" id="database-port" name="database-port">
+
+            <label for="database-user">Database User:</label>
+            <input type="text" id="database-user" name="database-user">
+
+            <label for="database-password">Database Password:</label>
+            <input type="password" id="database-password" name="database-password">
+
+            <label for="database-name">Database Name:</label>
+            <input type="text" id="database-name" name="database-name">
+            <button id="create-new-db-btn" type="submit">Create Database</button>
+        </div>
+
+        <button id="next-btn" type="submit">Next</button>
+    </div>
+
+    <div id="query-execution" style="display: none;">
+        <h2>Query Execution</h2>
+        <label for="query-prompt">Enter your query prompt:</label>
+        <input type="text" id="query-prompt" name="query-prompt">
+
+        <label for="table">Table:</label>
+        <select id="table" name="table"></select>
+
+        <button id="execute-query-btn" type="submit">Execute</button>
+    </div>
+
+    <div id="response" style="display: none;">
+        <h2>Query Response</h2>
+        <pre id="intermediate_steps"></pre>
+        <h3>Final Response</h3>
+        <pre id="query-response"></pre>
+        <h3>Feedback</h3>
+        <button id="thumbs-up-btn">👍</button>
+        <button id="thumbs-down-btn">👎</button>
+    </div>
+    
+    <div id="feedback" style="display: none;">
+        <p>Please provide your feedback:</p>
+        <label for="feedback-input">Feedback:</label>
+        <textarea id="feedback-input" name="feedback-input" rows="4" cols="50"></textarea>
+        <button id="submit-feedback-btn" type="submit">Submit Feedback</button>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var userId = "";
+            var dbId = "";
+            var queryId = "";
+            var res="";
+
+            $("#user-type").change(function () {
+                var userType = $(this).val();
+                if (userType === "new") {
+                    $("#new-user-fields").show();
+                    $("#existing-user-fields").hide();
+                } else if (userType === "existing") {
+                    $("#existing-user-fields").show();
+                    $("#new-user-fields").hide();
+                }
+            });
+
+            $("#register-user-btn").click(function() {
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var password = $("#password").val();
+                var mobile = $("#mobile").val();
+
+                $.post("/create_user", {
+                    name: name,
+                    email: email,
+                    password: password,
+                    mobile: mobile
+                }, function(data) {
+                    alert(data);
+                    if (data == 'Registration successful') {
+                        $("#existing-user-fields").show();
+                        $("#new-user-fields").hide();
+                    }
+                });
+            });
+
+            populateUserDatabases(userId);
+
+            function populateUserDatabases(user_id) {
+                $.get("/user_databases/" + user_id, function (data) {
+                var databases = data.databases;
+
+                $("#existing-database").empty();
+
+                databases.forEach(function (database) {
+                    var option = $("<option>").attr("value", database).text(database);
+                    $("#existing-database").append(option);
+                });
+                });
+            }
+
+            $("#login-user-btn").click(function() {
+                var email = $("#login-email").val();
+                var password = $("#login-password").val();
+
+                $.post("/login_user", {
+                    email: email,
+                    password: password
+                }, function(data) {
+                    alert(data.login_status);
+                    if (data.login_status='success') {
+                        userId = data.user_id;
+                        populateUserDatabases(data.user_id);
+                        $("#database-selection").show();
+                        $("#user-registration").hide();
+                    }
+                });
+            });
+
+            $("#select-existing-db-btn").click(function (event) {
+                event.preventDefault();
+                var existingDatabase = $("#existing-database").val();
+                $.get("/databases/" + existingDatabase, function (data) {
+                    dbId=existingDatabase;
+                    if (data === "Database credentials not found.") {
+                        alert("Invalid Database. Please try again.");
+                    } else {
+                        alert("Existing database selected!");
+                        $("#database-selection").hide();
+                        populateTables(dbId)
+                        $("#query-execution").show();
+                    }
+                });
+            });
+
+            $("#create-new-db-btn").click(function (event) {
+                event.preventDefault();
+                var host = $("#database-host").val();
+                var port = $("#database-port").val();
+                var user = $("#database-user").val();
+                var password = $("#database-password").val();
+                var name = $("#database-name").val();
+                $.post("/databases", { user_id: userId, host: host, port: port, user: user, password: password, database: name }, function (data) {
+                    dbId=data;
+                    alert("New database created successfully! Database ID: " + data);
+                    $("#database-selection").hide();
+                    populateTables(dbId)
+                    $("#query-execution").show();
+                });
+            });
+
+            $("#next-btn").click(function (event) {
+                event.preventDefault();
+                var databaseType = $("#database-type").val();
+                if (databaseType === "existing") {
+                    $("#existing-database-fields").show();
+                    $("#new-database-fields").hide();
+                } else if (databaseType === "new") {
+                    $("#existing-database-fields").hide();
+                    $("#new-database-fields").show();
+                }
+            });
+            function populateTables(dbId) {
+                $.ajax({
+                    url: "/databases/" + dbId,
+                    method: "GET",
+                    success: function(response) {
+                        var tables = response.tables;
+                        
+                        $("#table").empty();
+                        
+                        tables.forEach(function(table) {
+                            var option = $("<option>").text(table);
+                            $("#table").append(option);
+                        });
+                    },
+                    error: function(error) {
+                        console.error(error);
+                    }
+                });
+            }
+            $("#execute-query-btn").click(function (event) {
+                event.preventDefault();
+                var prompt = $("#query-prompt").val();
+                var table = $("#table").val();
+                $.post("/execute", { db_id: dbId, prompt: prompt, table: table }, function (data) {
+                    response= data.response;
+                    var intermediate_steps= data.intermediate_steps;
+                    queryId= data.query_id;
+                    $("#query-execution").show();
+                    $("#response").show();
+                    $("#intermediate_steps").text(intermediate_steps);
+                    $("#query-response").text(response);
+                    $("#feedback-prompt").val("");
+                });
+            });
+
+            $("#thumbs-up-btn").click(function () {
+                res="Correct";
+                $("#feedback").show();
+            });
+
+            $("#thumbs-down-btn").click(function () {
+                res="Incorrect";
+                $("#feedback").show();
+            });
+
+            $("#submit-feedback-btn").click(function (event) {
+                event.preventDefault();
+                var feedback = $("#feedback-input").val();
+                $.post("/feedback", { db_id: dbId, query_id:queryId, response:res, prompt:feedback }, function (data) {
+                    alert(data);
+                    $("#feedback-prompt").val("");
+                    $("#feedback").hide();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
