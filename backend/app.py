@@ -4,7 +4,7 @@ from flask_cors import CORS
 from src.models import db
 from src.seed import seed_data
 from settings import DEBUG, DB_CONFIG
-from src.apis import users_blueprint
+from src.apis import root_blueprint, users_blueprint
 
 
 ## App Config ##
@@ -17,6 +17,7 @@ migrate = Migrate(app, db) # Perform migrations
 
 ## Blueprints ##
 api_v1 = Blueprint('api', __name__, url_prefix='/api/v1')
+api_v1.register_blueprint(root_blueprint)
 api_v1.register_blueprint(users_blueprint)
 app.register_blueprint(api_v1)
 
