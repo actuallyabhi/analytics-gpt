@@ -2,8 +2,10 @@ from flask import Flask, Blueprint
 from flask_migrate import Migrate
 from flask_cors import CORS
 from src.models import db
+from src.seed import seed_data
 from settings import DEBUG, DB_CONFIG
 from src.apis import users_blueprint
+
 
 ## App Config ##
 app = Flask(__name__)
@@ -18,6 +20,11 @@ api_v1 = Blueprint('api', __name__, url_prefix='/api/v1')
 api_v1.register_blueprint(users_blueprint)
 app.register_blueprint(api_v1)
 
+
+## App Scripts ##
+@app.cli.command('seed')
+def seed():
+    seed_data()
 
 if __name__ == '__main__':
     app.run(debug=DEBUG)
