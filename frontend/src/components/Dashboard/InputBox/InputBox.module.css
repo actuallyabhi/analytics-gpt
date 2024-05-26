@@ -1,0 +1,118 @@
+.inputBoxContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  /* background-color: var(--rich-text-panel-background); */
+  background-color: #ffffff;
+  /* border-top: 1px solid #e0e0e0; */
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.2) ; /* Adjust the box-shadow values as per your preference */  border-radius: 16px;
+  width: 80%;
+  max-width: 960px;
+  padding-right: 0rem;
+  min-height: 68px;
+
+}
+
+
+
+.inputBoxContainer > button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0 2rem;
+  /* padding-left:2rem; */
+  cursor: pointer;
+  width: fit-content;
+  height: 100%;
+  font-size: 16px;
+  color: #2196f3;
+  font-weight: 500;
+
+}
+.UnansweredContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column; /* padding: 0 1rem; */
+  /* border-radius: 2px 2px 0 0; */
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2rem 0rem;
+  overflow: hidden;
+}
+
+
+.answerTo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  
+  padding: 1rem 1.5rem;
+  width: 80%;
+  max-width: 960px;
+  gap: 14px;
+  white-space: nowrap;
+}
+@media screen and (max-width: 768px) {
+  .answerTo {
+    width: 96%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+}
+.tableSelect {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.36rem 0.5rem;
+  max-width: 180px;
+  white-space: nowrap;
+  background-color: #ffffff;
+  outline: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--color5);
+  cursor: pointer;
+  outline: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+.tableSelector {
+  background-color: red;
+}
+.inputBox {
+    width: 100%; 
+    height:  2rem;
+    max-height: 160px;
+    font-size: 1.1rem;
+    color: rgba(0, 0, 0, 0.87);
+    line-height: 2rem;
+    padding-left: 0.82rem;
+    outline: none;
+    /* overflow-y: hidden; */
+    border: none;
+    resize: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .inputBoxContainer {
+    width:90%;
+
+  }
+  .answerTo {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .inputBoxContainer {
+    width:94%;
+
+  }
+  .answerTo {
+    width: 94%;
+  }
+  
+}

@@ -1,0 +1,15 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: center;
+    margin: 0px 0px;
+}
+
+.btnConatiner {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    padding: 8px 0px;
+}

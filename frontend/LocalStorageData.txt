@@ -1,0 +1,3 @@
+user_id
+database_id
+table_id

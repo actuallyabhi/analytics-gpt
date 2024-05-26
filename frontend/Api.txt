@@ -1,0 +1,44 @@
+1. /create_user (POST)
+Parameters: name, email, password, mobile
+Returns:
+If successful: "Registration successful"
+If error connecting to MySQL: "Error connecting to MySQL: <error_message>"
+If missing required fields: "Missing required fields"
+If error in retrieving from MySQL: "Error in retrieving from MySQL: <error_message>"
+If error storing credentials in MySQL: "Error storing credentials in MySQL: <error_message>"
+
+2. /login_user (POST)
+Parameters: email, password
+Returns: JSON object with the login status and user ID
+If successful: {"login_status": "success", "user_id": "<user_id>"}
+If invalid email or password: {"login_status": "Invalid email or password"}
+
+3. /user_databases/<user_id> (GET)
+Parameters: <user_id>
+Returns: JSON object with the list of database names
+{"databases": ["<database_name_1>", "<database_name_2>", ...]}
+
+4. /databases (POST)
+Parameters: user_id, host, port, user, password, database
+Returns:
+If successful: <db_id> (as string)
+If error connecting to MySQL: "Error connecting to MySQL: <error_message>"
+If error storing credentials in MySQL: "Error storing credentials in MySQL: <error_message>"
+
+5. /databases/<db_id> (GET)
+Parameters: <db_id>
+Returns: JSON object with the list of table names
+{"tables": ["<table_name_1>", "<table_name_2>", ...]}
+
+6. /execute (POST)
+Parameters: db_id, table, prompt
+Returns: JSON object with the response, query ID, and intermediate steps
+{"response": "<response_text>", "query_id": "<query_id>", "intermediate_steps": "<intermediate_steps_text>"}
+
+7. /feedback (POST)
+Parameters: db_id, query_id, response, prompt
+Returns:
+If successful: "Feedback submitted successfully!"
+If error storing query and response in MySQL: "Error storing query and response in MySQL: <error_message>"
+
+API Url: http://65.2.181.130:8000/api
