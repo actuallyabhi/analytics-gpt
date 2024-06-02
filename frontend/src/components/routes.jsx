@@ -65,56 +65,9 @@ function LoginNavigation() {
 	}, [])
 
 
-	// useEffect(() => {
-	// 	// disable auth check for now due to issues with too many redirects
-	// 	// Todo: fix auth check
-	// 	async function checkIsAuth(){
-
-	// 	}
-	// 	checkIsAuth();
-	// 	return history.listen(checkIsAuth);
-	// }, [])
-	// useEffect(() => {
-	// 	const unlisten = history.listen((location) => {
-	// 		console.log('Location changed to:', location.pathname);
-	// 		if (localStorage.getItem("user_id") == null) {
-	// 			history.push("/login");
-	// 			return;
-	// 		} else {
-	// 			setIsAuthenticated(true)
-	// 		}
-	// 		if (localStorage.getItem("database_id") == null) {
-	// 			history.push("/database");
-	// 			return;
-	// 		}
-	// 	});
-
-	// 	return () => {
-	// 		unlisten();
-	// 	};
-
-	// }, [history]);
-
 	const toggleLeftNav = () => {
 		setIsOpened(prev => !prev);
 	};
-
-	// useEffect(() => {
-	// 	const fetchAuthStatus = async () => {
-	// 		try {
-	// 			if (history.location.pathname === "/login") {
-	// 				return;
-	// 			}
-	// 			const res = await checkAuth();
-	// 			if (res.status === 200 && localStorage.getItem("host_url") == null) {
-	// 				history.push("/organization");
-	// 			}
-	// 		} catch (error) {
-	// 			history.push("/login");
-	// 		}
-	// 	};
-	// 	fetchAuthStatus();
-	// }, []);
 
 	return (
 		<Suspense fallback={<NewLoader firstPage={true} name="routes" />}>

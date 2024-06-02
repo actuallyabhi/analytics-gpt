@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextField, Button, Container, Typography, Grid } from '@mui/material'
+import { TextField, Button, Container, Typography, Grid, Select } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { getLocal } from '../../../../common/localStorageAccess'
 import { Post } from '../../../../common/common'
@@ -33,11 +33,13 @@ const useStyles = makeStyles((theme) => ({
 const AddDb = () => {
     const classes = useStyles()
     const history = useHistory()
+    const [loading, setLoading] = useState(false)
     const [isError, setIsError] = useState(false);
     const [errorText, setErrorText] = useState("");
     const [name, setName] = useState("");
     const [host, setHost] = useState("");
     const [port, setPort] = useState("");
+    const [database_type, setDatabaseType] = useState(1);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -47,10 +49,6 @@ const AddDb = () => {
             history.push("/login");
             return;
         }
-        // if (name.length === 0 || host.length === 0 || port.length === 0 || username.length === 0 || password.length === 0) {
-        //     setIsError(true);
-        //     return;
-        // }
         switch (true) {
             case name.length === 0: 
                 setIsError(true)
@@ -80,24 +78,25 @@ const AddDb = () => {
 
         }
         setIsError(false);
-        const formData = new FormData()
-        formData.append("database", name)
-        formData.append("host", host)
-        formData.append("port", port)
-        formData.append("user", username)
-        formData.append("password", password)
-        formData.append("user_id", getLocal("user_id"))
+        const data = {
+            database_name: name,
+            host: host,
+            port: port,
+            type: database_type,
+            username: username,
+            password: password
+        }
 
         try {
-            let res = await Post(1, "databases", formData);
-            if (res.status === 200) {
+            let res = await Post(1, "databases", data);
+            if (res.status === 201) {
                 history.push("/database");
                 return;
-            }
+            } 
         } catch (error) {
             if (error?.response?.status === 400) {
                 setIsError(true);
-                setErrorText(error?.response?.data);
+                setErrorText(error?.response?.data?.message);
                 return;
             }
             setErrorText("Something went wrong");
@@ -118,6 +117,24 @@ const AddDb = () => {
             </Typography>
             <Container component="main" maxWidth="xs">
                 <form className={classes.form} noValidate>
+                    {/* create a select for database type */}
+                    <Select
+                        native
+                        fullWidth
+                        value={database_type}
+                        onChange={(e) => {
+                            setDatabaseType(e.target.value);
+                        }}
+                        inputProps={{
+                            name: 'database_type',
+                            id: 'database_type',
+                        }}
+                    >
+                        <option value={2}>PostgreSQL</option>
+                        <option value={1}>MySQL</option>
+
+
+                    </Select>
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -219,6 +236,15 @@ const AddDb = () => {
 								</Typography>
 							)}
 					</Grid>
+                    <Grid container>
+                        <Grid item xs={12}>
+                            {loading && <CircularProgress
+                                size={24}
+                                color="inherit" />
+                            }
+                        </Grid>
+                    </Grid>
+
 
                     <Button
                         onClick={handleAddDb}

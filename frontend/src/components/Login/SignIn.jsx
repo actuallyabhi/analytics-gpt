@@ -58,18 +58,18 @@ export default function SignIn({
 		setIsError(false);
 
 		try {
-			const formData = new FormData()
-			formData.append("email",email)
-			formData.append("password",password)
+			const data = {
+				'email': email,
+				'password': password
+			}
 			setLoading(true)
 			
-			let res = await Post(0,"login_user",formData)
+			let res = await Post(0,"users/login",data)
 			setLoading(false)
-			// console.log(res);
 			if (res.status === 200 ){
-				setLocal("access_token",res.data.access_token)
-				setLocal("user_id",res.data.user_id)
-				setLocal("user_name",email)
+				setLocal("access_token",res.data.data.access_token)
+				setLocal("user_id",res.data.data.user.id)
+				setLocal("user_name",res.data.data.user.email)
 				toggleAuth()
 				history.push("/database");
 				// window.location.reload();

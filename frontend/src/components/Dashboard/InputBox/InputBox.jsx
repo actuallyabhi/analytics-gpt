@@ -60,7 +60,7 @@ const InputBox = ({ setQuery, loading, isFetching, setLoading, setOutput }) => {
 				setLoading(true);
 				const response = await Get(1, `databases/${getLocal("database_id")}`);
 				if (response.status === 200) {
-					const tables = response.data.tables
+					const tables = response.data.data
 					if (tables.length === 0) {
 						showToast("info","No Tables Found in the database!")
 					}

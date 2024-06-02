@@ -109,7 +109,8 @@ const UserNavbar = (props) => {
 	const history = useHistory();
 	let databases = (() => {
 		let db = getLocal('databases') 
-		return db ? JSON.parse(db) : []
+		if (db?.length === 0 || db === null) return []
+		return JSON.parse(db)
 	})()
 
 	const classes = useStyles();
@@ -178,7 +179,7 @@ const UserNavbar = (props) => {
 							  value={selectedDb}
 							  defaultValue={selectedDb}
 							>
-							  {databases.map((db,index) => <MenuItem key={index} value={db?.db_id}>{db?.database_name}</MenuItem>)}
+							  {databases?.map((db,index) => <MenuItem key={index} value={db?.id}>{db?.database_name}</MenuItem>)}
 							</Select>
 						  </FormControl>
 					)} 

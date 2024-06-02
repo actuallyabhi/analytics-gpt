@@ -14,18 +14,6 @@ import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 import { Post } from "../../common/common";
 
-function Copyright() {
-	return (
-		<Typography variant="body2" color="textSecondary" align="center">
-			{"Copyright © "}
-			<MuiLink color="inherit" href="https://www.beyondchats.com">
-				BeyondAnalytics
-			</MuiLink>{" "}
-			{new Date().getFullYear()}
-			{"."}
-		</Typography>
-	);
-}
 
 const useStyles = makeStyles((theme) => ({
 	paper: {
@@ -53,22 +41,12 @@ export default function SignUp() {
 	const [isError, setIsError] = useState(false);
 	const [errorText, setErrorText] = useState("");
 	const [firstName, setFirstName] = useState("");
-	const [mobile, setMobile] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const history = useHistory();
 
 	async function handleSubmit(event) {
 		event.preventDefault();
-		// if (
-		// 	firstName.length === 0 ||
-		// 	/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) === false ||
-		// 	password.length < 6 ||
-		// 	mobile.length < 10 ||  /^\d+$/.test(mobile) === false
-		// ) {
-		// 	setIsError(true);
-		// 	return;
-		// }
 		switch (true) {
 			case firstName.length === 0:
 				setIsError(true);
@@ -84,10 +62,6 @@ export default function SignUp() {
 				setIsError(true);
 				setErrorText("Password must be atleast 6 characters");
 				return;
-			case mobile.length < 10 || /^\d+$/.test(mobile) === false:
-				setIsError(true);
-				setErrorText(mobile.length === 0 ? "Mobile is required" : "Invalid mobile");
-				return;
 			default:
 				break;
 		}
@@ -96,16 +70,16 @@ export default function SignUp() {
 		setErrorText("");
 
 		try {
-			const formData = new FormData();
-			formData.append("name", firstName);
-			formData.append("email", email);
-			formData.append("password", password);
-			formData.append("mobile", mobile);
-			let res = await Post(0, "create_user", formData);
+			// use json
+			const data = {
+				'name': firstName,
+				'email': email,
+				'password': password,
+			}
+			let res = await Post(0, "users/register", data);
 			// console.log(res);
-			if (res.status === 200) {
+			if (res.status === 201) {
 				history.push("/login");
-			// history.push("/");
 			}
 			
 		} catch (error) {
@@ -166,21 +140,6 @@ export default function SignUp() {
 							<TextField
 								variant="outlined"
 								required
-								type="tel"
-								fullWidth
-								id="mobile"
-								label="Mobile Number"
-								name="mobile"
-								autoComplete="mobile"
-								value={mobile}
-								error={isError && (mobile.length < 10 || /^\d+$/.test(mobile) === false)}
-								onChange={(e) => setMobile(e.target.value)}
-							/>
-						</Grid>
-						<Grid item xs={12}>
-							<TextField
-								variant="outlined"
-								required
 								fullWidth
 								name="password"
 								label="Password"
@@ -226,9 +185,6 @@ export default function SignUp() {
 					</Grid>
 				</form>
 			</div>
-			<Box mt={5}>
-				<Copyright />
-			</Box>
 		</Container>
 	);
 }

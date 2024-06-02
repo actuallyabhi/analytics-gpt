@@ -39,10 +39,10 @@ const DbSelector = () => {
 	useEffect(() => {
 		(async () => {
 			try {
-				const response = await Get(1, `user_databases`);
+				const response = await Get(1, `databases`);
 				if (response.status === 200) {
-					setDatabases(response?.data?.databases);
-					setLocal('databases', JSON.stringify(response?.data?.databases))
+					setDatabases(response?.data?.data)
+					setLocal('databases', JSON.stringify(response?.data?.data));
 					setLoading(false);
 					return;
 				}
@@ -92,14 +92,14 @@ const DbSelector = () => {
 						</div>
 					)
 				)}
-				{databases?.map((db, index) => {
+				{databases?.length > 0 && databases?.map((db, index) => {
 					return (
 						<Button
 							className={classes.org}
 							variant="outlined"
 
 							color="primary"
-							onClick={() => handleDBSelecttion(db.db_id)}
+							onClick={() => handleDBSelecttion(db.id)}
 						>
 							{db.database_name}
 						</Button>
