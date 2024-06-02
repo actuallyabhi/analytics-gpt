@@ -23,14 +23,15 @@ const Dashboard = () => {
 					setLoading(true)
 					setIsError(false)
 					setTimeout(() => setIsFetching(true), 300)
-					let formData = new FormData()
-					formData.append("db_id", getLocal("database_id"))
-					formData.append("table", getLocal("selected_tables"))
-					formData.append("prompt", query)
-					let res = await Post(1, "execute", formData)
+					const data = {
+						"user_prompt": query,
+						"database_id": getLocal("database_id"),
+						"tables": getLocal("selected_tables") 
+					}
+					let res = await Post(1, "execute", data)
 					if (res.status === 200) {
-						setQueryId(res?.data?.query_id)
-						setOutput(res?.data?.response)
+						setQueryId(10) // TODO: Change this to the actual query id
+						setOutput(res?.data?.data)
 					}
 				} catch (error) {
 					setErrorText(error?.response?.data)

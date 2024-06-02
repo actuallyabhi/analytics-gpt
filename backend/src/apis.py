@@ -1,9 +1,10 @@
 from flask import Blueprint, request
 from src.models import User, Database_type, Database_credentials
 from src.schemas import RegisterRequestSchema, LoginRequestSchema, AddDatabaseRequestSchema
-from src.helpers import generate_access_token, construct_response, log, validate_database_connection, create_db_engine
+from src.helpers import generate_access_token, construct_response, log, validate_database_connection, create_db_engine, execute_llm_sql_agent_query
 from src.decorators import validate_marshmallow_schema, jwt_required
 from sqlalchemy import MetaData
+
 
 ## Blueprints ##
 root_blueprint = Blueprint('root', __name__)
@@ -112,10 +113,10 @@ def execute_query_api(user_id):
         database = Database_credentials.query.filter_by(id=database_id, created_by=user_id).first()
         if database is None:
             return construct_response('Database not found', 404)
-        result = execute_query(database.serialize(), user_prompt)
-        
+        current_database = database.serialize()
+        result = execute_llm_sql_agent_query(current_database, user_prompt, tables)
         print(result)
-        return construct_response('Query executed successfully', 200, [dict(row) for row in result])
+        return construct_response('Query executed successfully', 200, result)
     except Exception as e:
         log(e)
         return construct_response("Query execution failed", 500, e)

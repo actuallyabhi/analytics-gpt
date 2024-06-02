@@ -7,3 +7,4 @@ openai==1.23.6
 psycopg2==2.9.9
 PyJWT==2.8.0
 mysql-connector-python
+langchain-community
