@@ -65,6 +65,7 @@ logger.addHandler(console_handler)
 
 
 os.environ['OPENAI_API_KEY'] = settings.OPENAI_API_KEY
+os.environ['OPENAI_ORGANIZATION'] = settings.OPENAI_ORGANIZATION
 
 
 

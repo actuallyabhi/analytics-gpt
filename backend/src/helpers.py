@@ -51,7 +51,7 @@ def validate_database_connection(database_type, host, port, username, password, 
             engine = create_engine(connection_uri, connect_args={'connect_timeout': 5})
             connection = engine.connect()
             connection.close()
-            return True, f"{database_type.capitalize()} connection successful"
+            return True, f"{database_type} connection successful"
         except OperationalError as e:
             return False, str(e)
     except Exception as e:
